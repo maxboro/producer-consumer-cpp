@@ -5,7 +5,7 @@ Simple example of producer-consumer pattern in C++ (currently in development).
 #### Simulation:
 ```bash
 make           # Builds the project
-./bin/game     # Runs the executable
+./bin/exec     # Runs the executable
 ```
 
 #### Unit tests:
