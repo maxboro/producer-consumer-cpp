@@ -1,6 +1,17 @@
 # Compiler and flags
 CC = g++
-CFLAGS = -Wall -g -Iinclude -Iexternal -O3 -std=c++20 # Add -Iexternal for Catch2
+# Safety and debugging flags:
+# -Wall: Enable all warnings
+# -Wextra: Enable additional warnings
+# -Werror: Treat warnings as errors
+# -g: Generate debug info
+# -fsanitize=address: Enable Address Sanitizer to detect memory errors
+# -fstack-protector-all: Enable stack protection
+# -D_FORTIFY_SOURCE=2: Use fortify source for additional runtime checks
+# -Iinclude and -Iexternal: Include directories
+# -O3: Optimization level (you might remove this when debugging)
+# -std=c++20: Use C++20 standard
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -fstack-protector-all -D_FORTIFY_SOURCE=2 -Iinclude -Iexternal -O3 -std=c++20
 
 # Directories
 INC_DIR = include
