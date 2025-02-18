@@ -22,7 +22,7 @@ TEST_DIR = unit_tests
 
 # Source files and output
 SRC = main.cpp
-TARGET = $(BIN_DIR)/game
+TARGET = $(BIN_DIR)/exec
 
 # Test files
 TEST_SRC = $(wildcard $(TEST_DIR)/*.cpp) external/catch2/catch_amalgamated.cpp  # All .cpp files in the tests directory
