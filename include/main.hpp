@@ -10,20 +10,15 @@
 // Simple queue use example
 int main(){
     std::cout << "Running" << std::endl;
-    auto queue_inst = std::make_shared<std::queue<int>>();
+    auto queue_ptr = std::make_shared<std::queue<int>>();
+    
+    std::thread producer_thread(produce, queue_ptr);
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    std::thread consumer_thread(consume, queue_ptr);
 
-    // put elements to queue
-    for (int i = 0; i < 10; i++){
-        queue_inst->push(i);
-    }
-
-    // Read from queue
-    while (!queue_inst->empty()) {
-        int element = queue_inst->front();
-        std::cout << "Element from queue: " << element << std::endl;
-        queue_inst->pop();
-    }
-    std::cout << "Finished execution" << std::endl;
+    producer_thread.join();
+    consumer_thread.join();
+    std::cout << "Execution is finished" << std::endl;
     return 0;
 }
 
