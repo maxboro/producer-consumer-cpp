@@ -14,9 +14,10 @@ void produce(std::shared_ptr<std::queue<int>> queue_ptr, std::shared_ptr<std::mu
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
         // thread safe push element
-        mutex_ptr->lock();
-        queue_ptr->push(i);
-        mutex_ptr->unlock();
+        {
+            std::lock_guard<std::mutex> lock(*mutex_ptr);
+            queue_ptr->push(i);
+        }
 
         std::string msg = "Put element to queue: " + std::to_string(i) + "\n";
         std::cout << msg;
