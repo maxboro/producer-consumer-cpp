@@ -26,33 +26,41 @@ Testing framework: [Catch2](https://github.com/catchorg/Catch2) (licensed under 
 # Example 
 ```terminal
 Running
-Put element to queue: 0
-Put element to queue: 1
-Put element to queue: 2
-Consume element from queue: 0
-Put element to queue: 3
-Consume element from queue: 1
-Put element to queue: 4
-Consume element from queue: 2
-Put element to queue: 5
-Consume element from queue: 3
-Put element to queue: 6
-Consume element from queue: 4
-Put element to queue: 7
-Put element to queue: 8
+Put good to queue: 0-0
+Put good to queue: 2-0
+Put good to queue: 1-0
+Put good to queue: 2-1
+Consumer #0 consumed good: 0-0
+Put good to queue: 0-1
+Put good to queue: 1-1
+Consumer #1 consumed good: 1-0
+Put good to queue: 2-2
+Consumer #0 consumed good: 2-0
+Put good to queue: 1-2
+Put good to queue: 0-2
+Consumer #1 consumed good: 2-1
+Consumer #0 consumed good: 0-1
 ...
-Consume element from queue: 33
-Put element to queue: 37
-Consume element from queue: 34
-Put element to queue: 38
-Consume element from queue: 35
-Put element to queue: 39
-Consume element from queue: 36
-Consume element from queue: 37
-Put element to queue: 40
+Consumer #1 consumed good: 0-150
+Put good to queue: 2-227
+Consumer #0 consumed good: 2-151
+Put good to queue: 0-227
+Put good to queue: 0-228
+Put good to queue: 2-228
+Put good to queue: 1-228
+Consumer #0 consumed good: 0-151
+Consumer #1 consumed good: 1-151
+Put good to queue: 0-229
+Put good to queue: 2-229
+Put good to queue: 1-229
+Consumer #0 consumed good: 2-152
+Consumer #1 consumed good: 1-152
 ^C
 Caught signal 2 (SIGINT). Exiting safely...
-Put element to queue: 41
-Consume element from queue: 38
+Put good to queue: 2-230
+Consumer #1 consumed good: 0-152
+Put good to queue: 0-230
+Consumer #0 consumed good: 2-153
+Put good to queue: 1-230
 Execution is finished
 ```

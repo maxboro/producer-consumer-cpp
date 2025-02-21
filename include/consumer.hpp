@@ -8,25 +8,27 @@
 #include <atomic>
 #include <thread>
 #include <chrono>
+#include "good.h"
 
 // Read from queue
 void consume(
-        std::shared_ptr<std::queue<int>> queue_ptr, 
+        std::shared_ptr<std::queue<Good>> queue_ptr, 
         std::shared_ptr<std::mutex> mutex_ptr, 
-        std::atomic<bool>* stop_flag_ptr
+        std::atomic<bool>* stop_flag_ptr,
+        int consumer_id
  )  {
     while (!queue_ptr->empty() && !stop_flag_ptr->load()) {
-        int element;
+        Good next_good;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
         // thread safe get element
         {
             std::lock_guard<std::mutex> lock(*mutex_ptr);
-            element = queue_ptr->front();
+            next_good = queue_ptr->front();
             queue_ptr->pop();
         }
 
-        std::string msg = "Consume element from queue: " + std::to_string(element) + "\n";
+        std::string msg = "Consumer #" + std::to_string(consumer_id) + " consumed good: " + next_good.code + "\n";
         std::cout << msg;
     }
 }
