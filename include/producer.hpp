@@ -10,7 +10,11 @@
 #include <chrono>
 
 // put elements to queue
-void produce(std::shared_ptr<std::queue<int>> queue_ptr, std::shared_ptr<std::mutex> mutex_ptr, std::atomic<bool>* stop_flag_ptr){
+void produce(
+        std::shared_ptr<std::queue<int>> queue_ptr, 
+        std::shared_ptr<std::mutex> mutex_ptr, 
+        std::atomic<bool>* stop_flag_ptr
+)   {
     int i = 0;
     while (!stop_flag_ptr->load()) {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
