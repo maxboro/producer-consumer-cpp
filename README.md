@@ -39,12 +39,20 @@ Consume element from queue: 3
 Put element to queue: 6
 Consume element from queue: 4
 Put element to queue: 7
-Consume element from queue: 5
 Put element to queue: 8
-Consume element from queue: 6
-Put element to queue: 9
-Consume element from queue: 7
-Consume element from queue: 8
-Consume element from queue: 9
+...
+Consume element from queue: 33
+Put element to queue: 37
+Consume element from queue: 34
+Put element to queue: 38
+Consume element from queue: 35
+Put element to queue: 39
+Consume element from queue: 36
+Consume element from queue: 37
+Put element to queue: 40
+^C
+Caught signal 2 (SIGINT). Exiting safely...
+Put element to queue: 41
+Consume element from queue: 38
 Execution is finished
 ```
