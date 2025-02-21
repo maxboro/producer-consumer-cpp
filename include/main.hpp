@@ -28,12 +28,26 @@ int main(){
     auto queue_ptr = std::make_shared<std::queue<Good>>();
     auto mutex_ptr = std::make_shared<std::mutex>();
     
-    std::thread producer_thread(produce, queue_ptr, mutex_ptr, &stop_flag, 1);
-    std::this_thread::sleep_for(std::chrono::milliseconds(300));
-    std::thread consumer_thread(consume, queue_ptr, mutex_ptr, &stop_flag, 1);
+    std::vector<std::thread> threads;
 
-    producer_thread.join();
-    consumer_thread.join();
+    // producer threads
+    for (int i = 0; i < 3; i++){
+        threads.emplace_back(produce, queue_ptr, mutex_ptr, &stop_flag, i);
+    }
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    // consumer threads
+    for (int i = 0; i < 2; i++){
+        threads.emplace_back(consume, queue_ptr, mutex_ptr, &stop_flag, i);
+    }
+
+    // Join all threads
+    for (auto& t : threads) {
+        if (t.joinable()) {
+            t.join();
+        }
+    }
     std::cout << "Execution is finished" << std::endl;
     return 0;
 }
