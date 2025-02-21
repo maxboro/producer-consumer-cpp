@@ -9,6 +9,7 @@
 #include <csignal>
 #include "producer.hpp"
 #include "consumer.hpp"
+#include "good.h"
 
 // Global atomic flag to signal threads to stop
 std::atomic<bool> stop_flag(false);
@@ -24,12 +25,12 @@ int main(){
     std::signal(SIGINT, handle_sigint);
 
     std::cout << "Running" << std::endl;
-    auto queue_ptr = std::make_shared<std::queue<int>>();
+    auto queue_ptr = std::make_shared<std::queue<Good>>();
     auto mutex_ptr = std::make_shared<std::mutex>();
     
-    std::thread producer_thread(produce, queue_ptr, mutex_ptr, &stop_flag);
+    std::thread producer_thread(produce, queue_ptr, mutex_ptr, &stop_flag, 1);
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
-    std::thread consumer_thread(consume, queue_ptr, mutex_ptr, &stop_flag);
+    std::thread consumer_thread(consume, queue_ptr, mutex_ptr, &stop_flag, 1);
 
     producer_thread.join();
     consumer_thread.join();
