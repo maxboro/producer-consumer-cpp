@@ -1,17 +1,11 @@
 # Description
-Simple example of producer-consumer pattern in C++ (currently in development).
+Simple example of producer-consumer pattern in C++.
 
 # How to run
 #### Simulation:
 ```bash
 make           # Builds the project
 ./bin/exec     # Runs the executable
-```
-
-#### Unit tests:
-```bash
-make test      # Builds the unit tests
-./bin/tests    # Runs the executable of tests
 ```
 
 #### Clean:
