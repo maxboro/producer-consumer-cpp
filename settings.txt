@@ -1,0 +1,2 @@
+n_producers=3
+n_consumers=3
