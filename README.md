@@ -12,10 +12,18 @@ make           # Builds the project
 ```bash
 make clean     # Cleans up build files
 ```
+# Settings
+In file `settings.txt` you can modify simulation parameters.
+- n_producers (int: default 3) - Number of producer threads
+- n_consumers (int: default 3) - Number of consumer threads
 
 # Example 
 ```terminal
 Running
+Reading the settings.
+n_producers: 3
+n_consumers: 2
+Settings are loaded.
 Put good to queue: 0-0
 Put good to queue: 2-0
 Put good to queue: 1-0
