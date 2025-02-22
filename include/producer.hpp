@@ -22,7 +22,7 @@ Good create(int item_id, int producer_id) {
 void produce(
         std::shared_ptr<std::queue<Good>> queue_ptr, 
         std::shared_ptr<std::mutex> mutex_ptr, 
-        std::atomic<bool>* stop_flag_ptr,
+        const std::atomic<bool>* stop_flag_ptr,
         int producer_id
 )   {
     int i = 0;

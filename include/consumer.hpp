@@ -14,7 +14,7 @@
 void consume(
         std::shared_ptr<std::queue<Good>> queue_ptr, 
         std::shared_ptr<std::mutex> mutex_ptr, 
-        std::atomic<bool>* stop_flag_ptr,
+        const std::atomic<bool>* stop_flag_ptr,
         int consumer_id
  )  {
     while (!stop_flag_ptr->load()) {
